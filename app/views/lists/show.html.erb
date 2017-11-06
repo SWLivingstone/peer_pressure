@@ -1,0 +1,45 @@
+<div class="row">
+  <h1>
+    <%= @list.title %>
+  </h1>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <h2>To Do</h2>
+    <ol>
+      <% @list_items.each do |item| %>
+        <li>
+          <h4>
+            <%= item.text %>
+          </h4>
+          <p>
+            <%= item.details %>
+          </p>
+          <small>
+            Expires at <br>
+            <%= item.expires %>
+          </small>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+  <div clas="col-sm">
+    <%= form_with scope: :list_item, url: list_list_items_path(@list), local: true do |form| %>
+      <p>
+        <%= form.label :list_item_name %><br>
+        <%= form.text_field :text %>
+      </p>
+      <p>
+        <%= form.label :details %><br>
+        <%= form.text_field :details %>
+      </p>
+      <p>
+        <%= form.label :do_by %><br>
+        <%= datetime_select :list_item, :expires %>
+      </p>
+      <p>
+        <%= form.submit "Add List Item" %>
+      </p>
+    <% end %>
+  </div>
+</div>

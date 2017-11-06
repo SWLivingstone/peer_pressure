@@ -1,0 +1,13 @@
+<%= form_with scope: :list, url: user_lists_path(current_user), local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :is_public %><br>
+    <%= form.check_box :is_public? %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
